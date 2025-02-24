@@ -21,4 +21,6 @@ public final class ConnectionConfig {
         connection.setAutoCommit(false);
         return connection;
     }
+
+    
 }
