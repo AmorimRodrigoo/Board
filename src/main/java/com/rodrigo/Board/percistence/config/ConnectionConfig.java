@@ -22,5 +22,5 @@ public final class ConnectionConfig {
         return connection;
     }
 
-    
+
 }
