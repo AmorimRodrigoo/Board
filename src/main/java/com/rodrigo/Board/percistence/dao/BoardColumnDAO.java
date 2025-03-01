@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 @AllArgsConstructor
 public class BoardColumnDAO {
@@ -26,5 +27,9 @@ public class BoardColumnDAO {
             }
             return entity;
         }
+    }
+
+    public List<BoardColumnEntity> findById(Long id) throws SQLException{
+        return null;
     }
 }
