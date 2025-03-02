@@ -1,6 +1,7 @@
 package com.rodrigo.Board;
 
 import com.rodrigo.Board.percistence.migration.MigrationStrategy;
+import com.rodrigo.Board.ui.MainMenu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,6 +18,7 @@ public class BoardApplication {
 		try(var connection = getConnection()){
 			new MigrationStrategy(connection).executeMigration();
 		}
+		new MainMenu().execute();
 	}
 
 }

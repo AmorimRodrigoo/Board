@@ -17,7 +17,7 @@ public class BoardColumnDAO {
     private Connection connection;
 
     public BoardColumnEntity insert(final BoardColumnEntity entity) throws SQLException {
-        var sql = "INSERT INTO BOARDS_COLUMNS (name, order, kind, board_id) VALUES (?, ?, ?, ?)";
+        var sql = "INSERT INTO BOARDS_COLUMNS (name, `order`, kind, board_id) VALUES (?, ?, ?, ?)";
         try(var statemant = connection.prepareStatement(sql)) {
             var i = 1;
             statemant.setString(i++, entity.getName());

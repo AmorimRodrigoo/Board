@@ -1,40 +1,24 @@
-[2m2025-02-26T16:35:39.639-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502251553.sql
-[2m2025-02-26T16:35:39.672-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261508.sql
-[2m2025-02-26T16:35:39.679-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261534.sql
-[2m2025-02-26T16:35:39.686-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261607.sql
-[2m2025-02-26T16:35:39.829-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Creating database history table with name: board.databasechangelog
-[2m2025-02-26T16:35:40.159-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading from board.databasechangelog
-[2m2025-02-26T16:35:40.370-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.lockservice                   [0;39m [2m:[0;39m Successfully acquired change log lock
-[2m2025-02-26T16:35:40.373-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.command                       [0;39m [2m:[0;39m Using deploymentId: 0598540372
-[2m2025-02-26T16:35:40.378-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading from board.databasechangelog
-Running Changeset: db/changelog/migrations/db.changelog-202502251553.sql::202502251553::rodrigo
-[2m2025-02-26T16:35:40.457-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Custom SQL executed
-[2m2025-02-26T16:35:40.461-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m ChangeSet db/changelog/migrations/db.changelog-202502251553.sql::202502251553::rodrigo ran successfully in 57ms
-Running Changeset: db/changelog/migrations/db.changelog-202502261508.sql::202502251553::rodrigo
-[2m2025-02-26T16:35:40.537-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Custom SQL executed
-[2m2025-02-26T16:35:40.538-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m ChangeSet db/changelog/migrations/db.changelog-202502261508.sql::202502251553::rodrigo ran successfully in 60ms
-Running Changeset: db/changelog/migrations/db.changelog-202502261534.sql::202502251553::rodrigo
-[2m2025-02-26T16:35:40.600-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Custom SQL executed
-[2m2025-02-26T16:35:40.601-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m ChangeSet db/changelog/migrations/db.changelog-202502261534.sql::202502251553::rodrigo ran successfully in 51ms
-Running Changeset: db/changelog/migrations/db.changelog-202502261607.sql::202502251553::rodrigo
-[2m2025-02-26T16:35:40.665-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Custom SQL executed
-[2m2025-02-26T16:35:40.667-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m ChangeSet db/changelog/migrations/db.changelog-202502261607.sql::202502251553::rodrigo ran successfully in 56ms
+[2m2025-03-01T20:27:09.524-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502251553.sql
+[2m2025-03-01T20:27:09.552-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261508.sql
+[2m2025-03-01T20:27:09.557-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261534.sql
+[2m2025-03-01T20:27:09.560-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading resource: db/changelog/migrations/db.changelog-202502261607.sql
+[2m2025-03-01T20:27:09.857-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading from board.databasechangelog
+Database is up to date, no changesets to execute
+[2m2025-03-01T20:27:09.946-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.changelog                     [0;39m [2m:[0;39m Reading from board.databasechangelog
 
 UPDATE SUMMARY
-Run:                          4
-Previously run:               0
+Run:                          0
+Previously run:               4
 Filtered out:                 0
 -------------------------------
 Total change sets:            4
 
-[2m2025-02-26T16:35:40.690-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m UPDATE SUMMARY
-[2m2025-02-26T16:35:40.690-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Run:                          4
-[2m2025-02-26T16:35:40.690-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Previously run:               0
-[2m2025-02-26T16:35:40.690-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Filtered out:                 0
-[2m2025-02-26T16:35:40.691-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m -------------------------------
-[2m2025-02-26T16:35:40.691-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Total change sets:            4
-[2m2025-02-26T16:35:40.702-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Update summary generated
-[2m2025-02-26T16:35:40.709-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.command                       [0;39m [2m:[0;39m Update command completed successfully.
-Liquibase: Update has been successful. Rows affected: 4
-[2m2025-02-26T16:35:40.716-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.lockservice                   [0;39m [2m:[0;39m Successfully released change log lock
-[2m2025-02-26T16:35:40.719-03:00[0;39m [32m INFO[0;39m [35m9548[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.command                       [0;39m [2m:[0;39m Command execution complete
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m UPDATE SUMMARY
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Run:                          0
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Previously run:               4
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Filtered out:                 0
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m -------------------------------
+[2m2025-03-01T20:27:09.961-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Total change sets:            4
+[2m2025-03-01T20:27:09.963-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.util                          [0;39m [2m:[0;39m Update summary generated
+[2m2025-03-01T20:27:09.994-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.lockservice                   [0;39m [2m:[0;39m Successfully released change log lock
+[2m2025-03-01T20:27:09.996-03:00[0;39m [32m INFO[0;39m [35m15056[0;39m [2m--- [Board] [           main] [0;39m[36mliquibase.command                       [0;39m [2m:[0;39m Command execution complete
