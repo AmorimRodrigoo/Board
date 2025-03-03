@@ -1,9 +1,12 @@
 package com.rodrigo.Board.ui;
 
+import com.rodrigo.Board.percistence.entity.BoardColumnEntity;
 import com.rodrigo.Board.percistence.entity.BoardEntity;
+import com.rodrigo.Board.services.BoardColumnQueryService;
 import com.rodrigo.Board.services.BoardQueryService;
 import lombok.AllArgsConstructor;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -73,13 +76,32 @@ public class BoardMenu {
             optional.ifPresent(b ->{
                 System.out.printf("Board [%s,%s]\n", b.id(), b.name());
                 b.columns().forEach(c ->
-                   System.out.printf("Column [%s] tipo: [%s] tem %s cards\n", c.name(), c.kind(), c.cardsAmount())
+                   System.out.printf("Column [%s] tipo: [%s] tem %s cards\n",
+                           c.name(), c.kind(), c.cardsAmount())
                 );
             });
         }
     }
 
-    private void showColumn() {
+    private void showColumn() throws SQLException {
+        var columnsIds = entity.getBoardColumns().stream().map(BoardColumnEntity::getId).toList();
+        var selectedColumn = -1L;
+        while (!columnsIds.contains(selectedColumn)){
+            System.out.printf("Escolha uma coluna do board %s\n", entity.getName());
+            entity.getBoardColumns().forEach(
+                    c ->System.out.printf("%s - %s [%s]\n",
+                            c.getId(), c.getName(), c.getKind()));
+            selectedColumn = scanner.nextLong();
+        }
+        try(var connection = getConnection()){
+            var column = new BoardColumnQueryService(connection).findById(selectedColumn);
+            column.ifPresent(co ->{
+                System.out.printf("Coluna %s tipo %s\n", co.getName(), co.getKind());
+                co.getCards().forEach(
+                        ca ->System.out.printf("Card %s - %s\nDescrição: %s",
+                                ca.getId(), ca.getTitle(), ca.getDescription()));
+            } );
+        }
     }
 
     private void showCard() {
