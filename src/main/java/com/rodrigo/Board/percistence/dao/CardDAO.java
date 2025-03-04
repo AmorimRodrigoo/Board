@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import static com.rodrigo.Board.percistence.config.ConnectionConfig.getConnection;
+
 import static com.rodrigo.Board.percistence.converter.OffSetDateTimeConverter.toOffsetDateTime;
 
 
