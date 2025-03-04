@@ -7,12 +7,13 @@ import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 
 import static java.time.ZoneOffset.UTC;
+import static java.util.Objects.nonNull;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 public final class OffSetDateTimeConverter {
 
     public static OffsetDateTime toOffsetDateTime(final Timestamp value) {
-        return OffsetDateTime.ofInstant(value.toInstant(), UTC);
+        return nonNull(value) ? OffsetDateTime.ofInstant(value.toInstant(), UTC) : null;
     }
 }
