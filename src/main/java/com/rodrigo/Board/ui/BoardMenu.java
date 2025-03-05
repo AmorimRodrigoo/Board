@@ -1,17 +1,20 @@
 package com.rodrigo.Board.ui;
 
+import com.rodrigo.Board.dto.BoardColumnInfoDTO;
 import com.rodrigo.Board.percistence.entity.BoardColumnEntity;
 import com.rodrigo.Board.percistence.entity.BoardEntity;
+import com.rodrigo.Board.percistence.entity.CardEntity;
 import com.rodrigo.Board.services.BoardColumnQueryService;
 import com.rodrigo.Board.services.BoardQueryService;
 import com.rodrigo.Board.services.CardQueryService;
+import com.rodrigo.Board.services.CardService;
 import lombok.AllArgsConstructor;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import static com.rodrigo.Board.percistence.config.ConnectionConfig.getConnection;
+import static com.rodrigo.Board.percistence.entity.BoardColumnKindEnum.INITIAL;
 
 
 @AllArgsConstructor
@@ -22,7 +25,7 @@ public class BoardMenu {
 
     public void execute() {
         try {
-            System.out.printf("Bem vindo ao menu %s, selecione uma das opções", entity.getId());
+            System.out.printf("Bem vindo ao menu %s, selecione uma das opções\n", entity.getId());
             var option = -1;
             while (option != 9) {
                 System.out.println("1 - Criar um card");
@@ -56,10 +59,33 @@ public class BoardMenu {
         }
     }
 
-    private void createCard() {
+    private void createCard() throws SQLException {
+        var card = new CardEntity();
+        System.out.println("Informe o nome do Card:");
+        card.setTitle(scanner.next());
+        System.out.println("Informe a descrição do Card:");
+        card.setDescription(scanner.next());
+        var initialColumn = entity.getBoardColumns().stream()
+                .filter(bc -> bc.getKind().equals(INITIAL))
+                .findFirst().orElseThrow();
+        card.setBoardColumn(initialColumn);
+        try(var connection = getConnection()) {
+            new CardService(connection).insert(card);
+        }
     }
 
-    private void MoveCardToNextColumn() {
+    private void MoveCardToNextColumn() throws SQLException {
+        System.out.println("Informe o id do card que deseja mover: ");
+        var cardId = scanner.nextLong();
+        var boardColumnsInfo = entity.getBoardColumns().stream()
+                .map(
+                bc -> new BoardColumnInfoDTO(bc.getId(), bc.getOrder(), bc.getKind()))
+                .toList();
+        try(var connection = getConnection()) {
+            new CardService(connection).moveToNextColumn(cardId, boardColumnsInfo);
+        }catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void BlockCard() {
