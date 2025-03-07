@@ -6,6 +6,9 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+
+import static com.rodrigo.Board.percistence.entity.BoardColumnKindEnum.CANCEL;
 
 @Data
 public class BoardEntity {
@@ -15,4 +18,14 @@ public class BoardEntity {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<BoardColumnEntity> boardColumns = new ArrayList<>();
+
+    public BoardColumnEntity getCancelColum(){
+        return getFilteredColumn(bc -> bc.getKind().equals(CANCEL));
+    }
+
+    public BoardColumnEntity getFilteredColumn(Predicate<BoardColumnEntity> filter){
+        return boardColumns.stream()
+                .filter(filter)
+                .findFirst().orElseThrow();
+    }
 }
