@@ -2,7 +2,6 @@ package com.rodrigo.Board.services;
 
 
 import com.rodrigo.Board.dto.BoardColumnInfoDTO;
-import com.rodrigo.Board.dto.CardDetailsDTO;
 import com.rodrigo.Board.exeption.CardBlockedException;
 import com.rodrigo.Board.exeption.CardFinishedException;
 import com.rodrigo.Board.exeption.EntityNotFoundException;
@@ -40,7 +39,7 @@ public class CardService {
             final Long cardId, final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
         try {
             var dao = new CardDAO(connection);
-            var optional = dao.findByID(cardId);
+            var optional = dao.findById(cardId);
             var dto = optional.orElseThrow(
                     () -> new EntityNotFoundException("Card de id %s não foi encontrado".formatted(cardId))
             );
@@ -69,7 +68,7 @@ public class CardService {
     public void cancel(final Long cardId, final Long cancelColumnId, final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
         try {
             var dao = new CardDAO(connection);
-            var optional = dao.findByID(cardId);
+            var optional = dao.findById(cardId);
             var dto = optional.orElseThrow(
                     () -> new EntityNotFoundException("Card de id %s não foi encontrado".formatted(cardId))
             );
@@ -100,7 +99,7 @@ public class CardService {
     ) throws SQLException {
         try{
             var dao = new CardDAO(connection);
-            var optional = dao.findByID(id);
+            var optional = dao.findById(id);
             var dto = optional.orElseThrow(
                     () -> new EntityNotFoundException("O card de id %s não foi encontrado".formatted(id))
             );
@@ -119,6 +118,26 @@ public class CardService {
             }
             var blockDAO = new BlockDAO(connection);
             blockDAO.block(reason, id);
+            connection.commit();
+        }catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        }
+    }
+
+    public void unblock(final Long id, final String reason) throws SQLException {
+        try{
+            var dao = new CardDAO(connection);
+            var optional = dao.findById(id);
+            var dto = optional.orElseThrow(
+                    () -> new EntityNotFoundException("O card de id %s não foi encontrado".formatted(id))
+            );
+            if (!dto.blocked()){
+                var message = "O card %s não está bloqueado".formatted(id);
+                throw new CardBlockedException(message);
+            }
+            var blockDAO = new BlockDAO(connection);
+            blockDAO.unblock(reason, id);
             connection.commit();
         }catch (SQLException ex) {
             connection.rollback();
