@@ -6,6 +6,7 @@ import com.rodrigo.Board.dto.CardDetailsDTO;
 import com.rodrigo.Board.exeption.CardBlockedException;
 import com.rodrigo.Board.exeption.CardFinishedException;
 import com.rodrigo.Board.exeption.EntityNotFoundException;
+import com.rodrigo.Board.percistence.dao.BlockDAO;
 import com.rodrigo.Board.percistence.dao.CardDAO;
 import com.rodrigo.Board.percistence.entity.CardEntity;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.rodrigo.Board.percistence.entity.BoardColumnKindEnum.CANCEL;
 import static com.rodrigo.Board.percistence.entity.BoardColumnKindEnum.FINAL;
 
 
@@ -93,4 +95,34 @@ public class CardService {
         }
     }
 
+    public void block(
+            final Long id, final String reason, final List<BoardColumnInfoDTO> boardColumnsInfo
+    ) throws SQLException {
+        try{
+            var dao = new CardDAO(connection);
+            var optional = dao.findByID(id);
+            var dto = optional.orElseThrow(
+                    () -> new EntityNotFoundException("O card de id %s não foi encontrado".formatted(id))
+            );
+            if (dto.blocked()){
+                var message = "O card %s já está bloqueado".formatted(id);
+                throw new CardBlockedException(message);
+            }
+            var currentColumn = boardColumnsInfo.stream()
+                    .filter(bc -> bc.id().equals(dto.columnId()))
+                    .findFirst()
+                    .orElseThrow();
+            if (currentColumn.kind().equals(FINAL) || currentColumn.kind().equals(CANCEL)){
+                var message = "O card está em uma coluna do tipo %s e não pode ser bloqueado"
+                        .formatted(currentColumn.kind());
+                throw new IllegalStateException(message);
+            }
+            var blockDAO = new BlockDAO(connection);
+            blockDAO.block(reason, id);
+            connection.commit();
+        }catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        }
+    }
 }
