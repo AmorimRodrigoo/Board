@@ -1,9 +1,7 @@
 package com.rodrigo.Board.services;
 
 import com.rodrigo.Board.dto.CardDetailsDTO;
-import com.rodrigo.Board.percistence.dao.BoardColumnDAO;
 import com.rodrigo.Board.percistence.dao.CardDAO;
-import com.rodrigo.Board.percistence.entity.BoardColumnEntity;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
@@ -17,6 +15,6 @@ public class CardQueryService {
 
     public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {
         var dao = new CardDAO(connection);
-        return dao.findByID(id);
+        return dao.findById(id);
     }
 }

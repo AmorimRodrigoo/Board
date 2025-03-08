@@ -51,7 +51,7 @@ public class CardDAO {
         }
     }
 
-    public Optional<CardDetailsDTO> findByID(final Long id) throws SQLException {
+    public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {
         var sql =
                 """
                 SELECT c.id,
